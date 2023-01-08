@@ -74,6 +74,7 @@ async function getStudentById(req,res) {
 async function studentRegistration(req, res) {
 	const payload = req.body;
 
+
 	try {
 		const newStudent = new registerModel(payload);
 
