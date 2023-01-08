@@ -88,20 +88,20 @@ async function studentRegistration(req, res) {
 			}
 
 			if (result) {
-				serialNumberModel.updateOne(
-					{ _id: result?.serialNumber },
-					{ isValid: false, user: result?._id ,dateUsed:Date.now()},
-					(err, temp) => {
-						if (err) {
-							return res.status(404).json(err);
-						}else{
-                            return res.status(201).json(result);
-                        }
+				// serialNumberModel.updateOne(
+				// 	{ _id: result?.serialNumber },
+				// 	{ isValid: false, user: result?._id ,dateUsed:Date.now()},
+				// 	(err, temp) => {
+				// 		if (err) {
+				// 			return res.status(404).json(err);
+				// 		}else{
+                //             return res.status(201).json(result);
+                //         }
 
                     
-					}
-				);
-				// return res.status(201).json(result);
+				// 	}
+				// );
+				return res.status(201).json(result);
 			}
 		});
 

@@ -24,7 +24,12 @@ studentRouter.get("/:id", verifyToken, getStudentById);
 
 //resgister student route
 // studentRouter.post("/",verifyToken,uploadImage, studentRegistration);
-studentRouter.post("/register", verifySerial, studentRegistration);
+studentRouter.post("/register", studentRegistration);
+
+/*
+Uncomment this part when client has paid and UI is ready
+*/
+// studentRouter.post("/register", verifySerial, studentRegistration);
 
 //delete student route by id route
 studentRouter.delete("/:id", verifyToken, deleteStudent);
