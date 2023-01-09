@@ -73,7 +73,7 @@ async function getAllserialNumber(req,res) {
     async function updateSerialNumber(req,res) {
         const Id = req.params.id;
     
-        serialNumberModel.findByIdAndDelete(Id, (err, shippment) => {
+        serialNumberModel.findByIdAndDelete(Id, (err, serial) => {
             if (err) {
                 return res.status(404).json({
                     message: err,
@@ -81,8 +81,8 @@ async function getAllserialNumber(req,res) {
             }
     
             return res.json({
-                data: shippment,
-                message:'shippment deleted successfully'
+                data: serial,
+                message:'serial number deleted successfully'
             });
         });
     }
