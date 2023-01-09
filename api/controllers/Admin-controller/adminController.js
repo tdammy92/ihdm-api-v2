@@ -36,14 +36,15 @@ async function Login(req, res) {
 //admin register controller
 async function Register(req, res) {
 	//creating a validation schema for Joi to validate
-console.log(req.body);
+// console.log(req.body);
 	const schema = Joi.object({
-		username: Joi.string().min(5).max(8).required(),
+		username: Joi.string().min(5).max(15).required(),
 		email: Joi.string().email().required(),
 		password: Joi.string()
 			.min(6)
+			.max(20)
 			.alphanum()
-			.pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
+			.pattern(new RegExp("^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{4,16}$"))
 			.required(),
 	});
 
