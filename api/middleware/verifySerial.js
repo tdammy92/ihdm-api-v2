@@ -1,7 +1,6 @@
 
 const serialNumberModel = require('../Database/model/serialnumberModel');
 
-
 async function verifySerial(req,res,next) {
     const serial = await req.body.serialNumber;
   

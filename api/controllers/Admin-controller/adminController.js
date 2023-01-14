@@ -43,7 +43,7 @@ async function Register(req, res) {
 		password: Joi.string()
 			.min(6)
 			.max(20)
-			.alphanum()
+		
 			// .pattern(new RegExp("^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{4,16}$"))
 			.required(),
 	});

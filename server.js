@@ -22,7 +22,7 @@ server.use(express.json({ limit: '50mb' }));
 
 
 server.get("/api", (req, res) => {
-	res.send("welocme to igpcm api/v1");
+	res.send("welocme to Ihdm api/v2");
  
 });
 

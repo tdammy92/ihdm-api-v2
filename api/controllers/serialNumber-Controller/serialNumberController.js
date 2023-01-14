@@ -8,23 +8,17 @@ const genrateSerial = require('../../utils/getSerialNumber')
 
 // get all serial number
 async function getAllserialNumber(req,res) {
-    // console.log("this code ran");
+ 
     
     try {
-        // const response = await  studentModel.find({}).populate('user');
+    
         const response = await  serialNumberModel.find({}).populate('user');
-    
-        
-    
-        // const notes = response.map((note)=>{
-        // 	return {...note,user:{password:undefined,token:undefined}}
-        // })
-        
+          
         return res.send(response.reverse())
         
     } catch (error) {
        return res.status(500).json({
-        message:'Somthing went wrong'
+        message:'Something went wrong'
        })
     }
 
@@ -69,8 +63,8 @@ async function getAllserialNumber(req,res) {
 
 
 
-    //update serial number
-    async function updateSerialNumber(req,res) {
+    //Delete serial number
+    async function deleteSerialNumber(req,res) {
         const Id = req.params.id;
     
         serialNumberModel.findByIdAndDelete(Id, (err, serial) => {
@@ -82,7 +76,7 @@ async function getAllserialNumber(req,res) {
     
             return res.json({
                 data: serial,
-                message:'serial number deleted successfully'
+                message:'serial Deleted successfully'
             });
         });
     }
@@ -91,5 +85,5 @@ async function getAllserialNumber(req,res) {
 
 
     module.exports = {
-        getAllserialNumber,generateSerialNumber,updateSerialNumber
+        getAllserialNumber,generateSerialNumber,deleteSerialNumber
     }

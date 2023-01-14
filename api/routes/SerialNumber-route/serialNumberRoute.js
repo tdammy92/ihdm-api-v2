@@ -4,7 +4,7 @@ const serialNumberRouter = express.Router();
 const verifyToken = require('../../middleware/verify');
 
 
-const { getAllserialNumber,generateSerialNumber,updateSerialNumber} = require('../../controllers')
+const { getAllserialNumber,generateSerialNumber,deleteSerialNumber} = require('../../controllers')
 
 
     //get all student route
@@ -17,7 +17,7 @@ serialNumberRouter.post("/generate",verifyToken ,generateSerialNumber);
 
 
 
-//delete student route by id route
-serialNumberRouter.post("/:id",verifyToken, updateSerialNumber);
+//delete serialNumber route by id route
+serialNumberRouter.delete("/:id",verifyToken, deleteSerialNumber);
 
 module.exports = serialNumberRouter;

@@ -1,5 +1,5 @@
 const {Login,Register} = require('./Admin-controller/adminController');
-const { getAllserialNumber,generateSerialNumber,updateSerialNumber} = require('./serialNumber-Controller/serialNumberController')
+const { getAllserialNumber,generateSerialNumber,deleteSerialNumber} = require('./serialNumber-Controller/serialNumberController')
 
 const  {
     getAllStudent,getRecentStudent,getStudentById,studentRegistration,deleteStudent
@@ -9,5 +9,5 @@ const  {
 
 
 module.exports = {
-    Login,Register, getAllStudent,getStudentById,studentRegistration,deleteStudent, getAllserialNumber,generateSerialNumber,updateSerialNumber,getRecentStudent
+    Login,Register, getAllStudent,getStudentById,studentRegistration,deleteStudent, getAllserialNumber,generateSerialNumber,deleteSerialNumber,getRecentStudent
 }

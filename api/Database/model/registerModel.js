@@ -15,6 +15,8 @@ const registerSchema = new mongoose.Schema(
 		SecondInst: { type: String },
 		DateCompleted2:  {  type: Date },
 		DiplomaC: { type: String },
+		DegreeC: { type: String },
+			MasterC: { type: String },
 		PgdC: { type: String },
 		currentRole: { type: String },
 		currentOrg: { type: String },

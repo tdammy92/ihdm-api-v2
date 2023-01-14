@@ -4,17 +4,56 @@ const serialNumberModel = require("../../Database/model/serialnumberModel");
 
 // get all student route
 async function getAllStudent(req, res) {
-	// console.log("this code ran");
+	console.log("this code ran");
+	const query = req.query ;
+
+let filter = {}
+// const search = req.query.search ?? '' ;
+
+if (query) {
+	
+	const name = Object.keys(query)[0];
+	const value = Object.values(query)[0];
+	
+
+
+		// filter = {name:{$regex:value,$options:"i"}}
+
+		if (name==='Fname') {
+			filter = {Fname:{$regex:value,$options:"i"}}
+			
+		}
+		if (name==='Lname') {
+			filter = {Lname:{$regex:value,$options:"i"}}
+			
+		}
+		if (name==='state') {
+			filter = {state:{$regex:value,$options:"i"}}
+			
+		}
+		
+		if (name==='phone') {
+			filter = {phone:{$regex:value,$options:"i"}}
+			
+		}
+		if (name==='stateCode') {
+			filter = {stateCode:{$regex:value,$options:"i"}}
+			
+		}
+	}
+
+
 
 	try {
 		// const response = await  registerModel.find({}).populate('user');
-		const response = await registerModel.find({});
+		const response = await registerModel.find(filter).sort({'createdAt':'desc'});
 
 		// const notes = response.map((note)=>{
 		// 	return {...note,user:{password:undefined,token:undefined}}
 		// })
 
-		return res.send(response?.reverse());
+		return res.send(response);
+	
 	} catch (error) {
 		return res.status(500).json({
 			message: "Somthing went wrong",
@@ -31,7 +70,9 @@ async function getRecentStudent(req, res) {
 		// const response = await  registerModel.find({}).populate('user');
 		const response = await registerModel.find({});
 
-		const recent = response?.reverse().slice(0,5)
+		const recent = response?.reverse().slice(0,10)
+
+		console.log(recent.length)
 
 		return res.send(recent);
 	} catch (error) {
@@ -40,7 +81,6 @@ async function getRecentStudent(req, res) {
 		});
 	}
 }
-
 //get student by Id
 
 
@@ -53,7 +93,7 @@ async function getStudentById(req,res) {
 			if (err) {
 				return res.status(400).json({
 					status: "failure",
-					message: "Somthing went wrong",
+					message: "Somtheing went wrong",
 				});
 			}else{
 				return res.send(student);
@@ -63,7 +103,7 @@ async function getStudentById(req,res) {
 		console.log({ error });
 		return res.status(400).json({
 			status: "failure",
-			message: "Somthing went wrong",
+			message: "Something went wrong",
 		});
 	}
 	
@@ -89,20 +129,20 @@ async function studentRegistration(req, res) {
 			}
 
 			if (result) {
-				// serialNumberModel.updateOne(
-				// 	{ _id: result?.serialNumber },
-				// 	{ isValid: false, user: result?._id ,dateUsed:Date.now()},
-				// 	(err, temp) => {
-				// 		if (err) {
-				// 			return res.status(404).json(err);
-				// 		}else{
-                //             return res.status(201).json(result);
-                //         }
+				serialNumberModel.updateOne(
+					{ _id: result?.serialNumber },
+					{ isValid: false, user: result?._id ,dateUsed:Date.now()},
+					(err, temp) => {
+						if (err) {
+							return res.status(404).json(err);
+						}else{
+                            return res.status(201).json(result);
+                        }
 
                     
-				// 	}
-				// );
-				return res.status(201).json(result);
+					}
+				);
+				// return res.status(201).json(result);
 			}
 		});
 

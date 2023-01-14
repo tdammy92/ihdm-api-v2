@@ -8,7 +8,7 @@ const serialnumberSchema = new mongoose.Schema(
 		isValid: {type:Boolean,default:true},
         user:{
             type: mongoose.Schema.Types.ObjectId,
-			ref: "Student",
+			ref: "registers",
         }
 	},
 	{ timestamps: true }
