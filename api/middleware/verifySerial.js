@@ -17,11 +17,16 @@ async function verifySerial(req,res,next) {
 
          return  next()                  
         }
+
+       
     } catch (error) {
-       return res.status(406).json({
+
+        
+       return res.status(402).json({
         status:'failed',
         message:'Invalid Serial Number'
        })
+
     }
 }
 

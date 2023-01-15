@@ -124,7 +124,7 @@ async function studentRegistration(req, res) {
 				return res.status(400).json({
 					status: "failed",
 					message: err,
-					// message:"User already exist"
+			
 				});
 			}
 
