@@ -9,9 +9,7 @@ const adminModel = require("../../Database/model/adminModel");
 async function Login(req, res) {
 	//verify email and password;
 	const admin = await adminModel.findOne({ email: req.body.email });
-
 	if (!admin) return res.status(404).send("Invalid email address");
-
 	//verify password
 	const verifyPassword = await bcrypt.compare(req.body.password, admin.password);
 	if (verifyPassword === false) return res.status(304).send("Invalid password");
